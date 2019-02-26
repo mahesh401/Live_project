@@ -13,6 +13,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -21,16 +22,16 @@ import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
 import com.training.pom.CYTC_002AdminLoginTestPOM;
-import com.training.pom.CYTC_003AdminAccessToEditRegisteredUserPOM;
+import com.training.pom.CYTC_033AddLoanDetailsPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class CyclosCYTC_003 {
-	
+public class CyclosCYTC_033 {
+
 	private WebDriver driver;
 	private String baseUrl;
 	private CYTC_002AdminLoginTestPOM CYTC_002AdminLoginTestPOM;
-	private CYTC_003AdminAccessToEditRegisteredUserPOM CYTC_003AdminAccessToEditRegisteredUserPOM;
+	private CYTC_033AddLoanDetailsPOM CYTC_033AddLoanDetailsPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -39,49 +40,56 @@ public class CyclosCYTC_003 {
 		properties = new Properties();
 		FileInputStream inStream = new FileInputStream("./resources/others.properties");
 		properties.load(inStream);
-		
+
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		CYTC_002AdminLoginTestPOM = new CYTC_002AdminLoginTestPOM(driver);
-		CYTC_003AdminAccessToEditRegisteredUserPOM = new CYTC_003AdminAccessToEditRegisteredUserPOM(driver); 
+		CYTC_033AddLoanDetailsPOM = new CYTC_033AddLoanDetailsPOM(driver); 
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
 		driver.get(baseUrl);
 	}
 
-	@Test (priority= 1)
+	@Test (priority= 0)
 	public void adminLoginTest() throws InterruptedException {
 		CYTC_002AdminLoginTestPOM.loginName("admin");
 		CYTC_002AdminLoginTestPOM.password("123456");
 		CYTC_002AdminLoginTestPOM.submitBtn();
 		screenShot.captureScreenShot("First");		
 	}
-	
-	@Test (priority= 2) 
-	public void modifyTheUserAccount() throws InterruptedException{
 
-	
-		CYTC_003AdminAccessToEditRegisteredUserPOM.memberUsername("mahesh3");
-		screenShot.captureScreenShot("Second");
-		Thread.sleep(1000);
-		CYTC_003AdminAccessToEditRegisteredUserPOM.submitBtn2();
-		CYTC_003AdminAccessToEditRegisteredUserPOM.newGrp();
-		//Group selection
-		Select dropdown = new Select(driver.findElement(By.name("newGroupId")));
-		dropdown.selectByVisibleText("Full members");
-		CYTC_003AdminAccessToEditRegisteredUserPOM.comments("full access to the member");
-		screenShot.captureScreenShot("Third");
-		CYTC_003AdminAccessToEditRegisteredUserPOM.submitBtn3();
-		
+	@Test (priority= 1) 
+	public void addLoanForMember() {
+
+		CYTC_033AddLoanDetailsPOM.memberLogin("mahesh3");
+		CYTC_033AddLoanDetailsPOM.GrantLoanBtn();
+		CYTC_033AddLoanDetailsPOM.LoanAmount("200000");
+		CYTC_033AddLoanDetailsPOM.descriptionField("Home Loan");
+		CYTC_033AddLoanDetailsPOM.SubmitBtn1();
+		CYTC_033AddLoanDetailsPOM.SubmitBtn2();
+
 		Alert alert = driver.switchTo().alert();
-		String Actual1 = alert.getText();
+		String Actual = alert.getText();
 		alert.accept();
-		
-		String Expected ="The member's group was changed";
+
+		String Expected ="The loan was successfully granted";
 		Expected = Expected.replaceAll("\\s", "");
 
-		System.out.println(Actual1);
-		String Actual = Actual1.replaceAll("\\s", ""); 
-		assertEquals(Actual, Expected);	
+		System.out.println(Actual);
+		String Actual1 = Actual.replaceAll("\\s", ""); 
+		assertEquals(Actual1, Expected);	
+	}
+
+	@Test (priority = 2)
+	public void VerifyTheAddedLoans() {
+		CYTC_033AddLoanDetailsPOM.ViewLoansBtn();
+
+		String ActualDescription = driver.findElement(By.xpath ("//td[contains(text(),'Home Loan')]")).getText();
+		String Expected ="Home Loan";
+		Expected = Expected.replaceAll("\\s", "");
+
+		System.out.println();
+		String Actual1 = ActualDescription.replaceAll("\\s", ""); 
+		assertEquals(Actual1, Expected);	
 	}
 }

@@ -22,6 +22,10 @@ public class CYTC_002AdminLoginTestPOM {
 	@FindBy(xpath = "//*[@id=\"cyclosLogin\"]/table/tbody/tr[3]/td/input")
 	private WebElement submitbtn;
 	
+	//For Admin logout
+	@FindBy (xpath = "//span[contains(text(),'Logout')]")
+	private WebElement LogOut;
+	
 	
 	
 	public void loginName(String loginName) {
@@ -36,6 +40,10 @@ public class CYTC_002AdminLoginTestPOM {
 	
 	public void submitBtn() {
 		this.submitbtn.click();
+	}
+	
+	public void LogOut() {
+		this.LogOut.click();
 	}
 	
 }

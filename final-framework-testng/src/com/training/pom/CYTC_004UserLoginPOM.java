@@ -13,10 +13,10 @@ public class CYTC_004UserLoginPOM {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(id = "cyclosUsername")
+	@FindBy(xpath = "//*[@id=\"cyclosUsername\"]")
 	private WebElement loginName;
 	
-	@FindBy(id = "cyclosPassword")
+	@FindBy(xpath = "//*[@id=\"cyclosPassword\"]")
 	private WebElement password; 
 	
 	@FindBy(xpath = "//*[@id=\"cyclosLogin\"]/table/tbody/tr[3]/td/input")

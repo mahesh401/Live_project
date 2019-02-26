@@ -60,9 +60,7 @@ public class CyclosCYTC_001 {
 		CYTC_001UserRegistrationPOM.loginName("mahesh10");
 		CYTC_001UserRegistrationPOM.fullName("Mahesh Venkataswamy");
 		CYTC_001UserRegistrationPOM.emailID("mahesh410@gmail.com");
-
 		CYTC_001UserRegistrationPOM.birthDate("24061986");
-
 		CYTC_001UserRegistrationPOM.genderMale();
 		CYTC_001UserRegistrationPOM.address("Indiranagar");
 		CYTC_001UserRegistrationPOM.postalCode("560008");
