@@ -73,7 +73,7 @@ public class CyclosCYTC_034 {
 
 	}
 
-	@Test(priority= 3)
+	@Test (priority= 3)
 	public void RepaymentTest() {
 		CYTC_034ViewLoanAmount.AmountField("500");
 		CYTC_034ViewLoanAmount.RepayBtn();
@@ -105,7 +105,7 @@ public class CyclosCYTC_034 {
 		System.out.println("Loan Balance after repayment:" +AmountBalance2);		
 	}
 
-	@Test(priority= 4)
+	@Test (priority= 4)
 	public void UserLogoutTest() {
 		CYTC_034ViewLoanAmount.LogoutBtn();
 		Alert alert3 = driver.switchTo().alert();

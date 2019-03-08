@@ -37,7 +37,7 @@ public class CYTC_031AddAdvertisementAndVerifyPOM {
 	@FindBy (name = "ad(permanent)")
 	private WebElement AddPermament;
 
-	@FindBy (xpath = "//iframe[@title='Rich text editor, descriptionText']")
+	@FindBy (xpath = "//iframe[@title='Rich text editor, descriptionText']")	
 	private WebElement Description;
 
 	@FindBy(xpath = "//*[@id=\"tdContents\"]/form/table[1]/tbody/tr[2]/td/table/tbody/tr[13]/td")

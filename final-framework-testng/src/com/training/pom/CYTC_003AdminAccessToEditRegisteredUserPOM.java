@@ -16,10 +16,10 @@ public class CYTC_003AdminAccessToEditRegisteredUserPOM {
 	@FindBy(id = "memberUsername")
 	private WebElement memberUsername;
 	
-	@FindBy(xpath = "//*[@id=\"tdContents\"]/table[1]/tbody/tr[2]/td/table/tbody/tr[2]/td/fieldset/table/tbody/tr[1]/td[4]/input")
+	@FindBy(xpath = "//body[@class='main']//tr//tr[2]//td[1]//fieldset[1]//table[1]//tbody[1]//tr[1]//td[4]//input[1]")
 	private WebElement submitBtn2;
 	
-	@FindBy(xpath = "//*[@id=\"tdContents\"]/form/table[1]/tbody/tr[2]/td/table/tbody/tr[2]/td[2]/select")
+	@FindBy(xpath = "//select[@name='newGroupId']")
 	private WebElement newGrp;
 	
 	@FindBy(xpath = "//*[@id=\"tdContents\"]/form/table[1]/tbody/tr[2]/td/table/tbody/tr[4]/td/input")
@@ -42,8 +42,10 @@ public class CYTC_003AdminAccessToEditRegisteredUserPOM {
 		this.newGrp.click();
 	}
 	
-	public void comments(String comments) {
+	public String comments(String comments) {
 		this.comments.sendKeys(comments);
+		return this.comments.getAttribute("value");
+		
 	}
 	
 	public void submitBtn3() {

@@ -3,13 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.training.sanity.tests.CyclosCYTC_001">
+      <class name="com.training.regression.tests.CYTC_065UserRegistrationAndProvideAccessToMemberDBTest">
         <methods>
-          <include name="setUp"/>
           <include name="setUpBeforeClass"/>
-          <include name="userAccountCreation"/>
+          <include name="adminLoginTest"/>
+          <include name="createNewMember" invocation-numbers="0"/>
+          <include name="provideAccessToMember" invocation-numbers="0"/>
         </methods>
-      </class> <!-- com.training.sanity.tests.CyclosCYTC_001 -->
+      </class> <!-- com.training.regression.tests.CYTC_065UserRegistrationAndProvideAccessToMemberDBTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

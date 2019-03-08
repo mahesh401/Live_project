@@ -69,48 +69,58 @@ public class CYTC_001UserRegistrationPOM {
 	
 	@FindBy(xpath="//*[@id=\"saveButton\"]")
 	private WebElement saveBtn;
+	
+	@FindBy(xpath="//*[@id=\"btn\"]")
+	private WebElement OKBtn;
 
 	
 	public void submitBtn() {
 		this.submitBtn.click();
 	}
 	
-	public void loginName(String loginName) {
+	public String loginName(String loginName) {
 		this.loginName.clear();
 		this.loginName.sendKeys(loginName);
+		return this.loginName.getAttribute("value");
 	}
 	
-	public void fullName(String fullName) {
+	public String fullName(String fullName) {
 		this.fullName.clear();
 		this.fullName.sendKeys(fullName);
+		return this.fullName.getAttribute("value");
 	}
 	
-	public void emailID(String emailID) {
+	public String emailID(String emailID) {
 		this.emailID.clear();
 		this.emailID.sendKeys(emailID);
+		return this.emailID.getAttribute("value");
 	}
 	
-	public void birthDate(String birthDate) {
+	public String birthDate(String birthDate) {
 		this.birthDate.sendKeys(birthDate);
+		return this.birthDate.getAttribute("value");
 	}
 	
 	public void genderMale() {
 		this.genderMale.click();
 	}
 	
-	public void address(String address) {
+	public String address(String address) {
 		this.address.clear();
 		this.address.sendKeys(address);
+		return this.address.getAttribute("value");
 	}
 	
-	public void postalCode(String postalCode) {
+	public String postalCode(String postalCode) {
 		this.postalCode.clear();
 		this.postalCode.sendKeys(postalCode);
+		return this.postalCode.getAttribute("value");
 	}
 	
-	public void city(String city) {
+	public String city(String city) {
 		this.city.clear();
 		this.city.sendKeys(city);
+		return this.city.getAttribute("value");
 	}
 	
 	public void area() {
@@ -121,34 +131,40 @@ public class CYTC_001UserRegistrationPOM {
 		this.areaSelect();
 	}
 	
-	public void phoneNum(String phoneNum) {
+	public String phoneNum(String phoneNum) {
 		this.phoneNum.clear();
 		this.phoneNum.sendKeys(phoneNum);
+		return this.phoneNum.getAttribute("value");
 	}
 	
-	public void mobPhoneNum(String mobPhoneNum) {
+	public String mobPhoneNum(String mobPhoneNum) {
 		this.mobPhoneNum.clear();
 		this.mobPhoneNum.sendKeys(mobPhoneNum);
+		return this.mobPhoneNum.getAttribute("value");
 	}
 	
-	public void faxNum(String faxNum) {
+	public String faxNum(String faxNum) {
 		this.faxNum.clear();
 		this.faxNum.sendKeys(faxNum);
+		return this.faxNum.getAttribute("value");
 	}
 	
-	public void url(String url) {
+	public String url(String url) {
 		this.url.clear();
 		this.url.sendKeys(url);
+		return this.url.getAttribute("value");
 	}
 	
-	public void password(String password) {
+	public String password(String password) {
 		this.password.clear();
 		this.password.sendKeys(password);
+		return this.password.getAttribute("value");
 	}
 	
-	public void confirmPassword(String confirmPassword) {
+	public String confirmPassword(String confirmPassword) {
 		this.confirmPassword.clear();
 		this.confirmPassword.sendKeys(confirmPassword);
+		return this.confirmPassword.getAttribute("value");
 	}
 	
 	public void capthcaText(String capthcaText) {
@@ -159,5 +175,8 @@ public class CYTC_001UserRegistrationPOM {
 	public void saveBtn() {
 		this.saveBtn.click();
 	}
-
+	
+	public void OKBtn() {
+		this.OKBtn.click();
+	}
 }
